@@ -5,13 +5,13 @@ metadata:
   name: yelp-camp-secrets
 type: Opaque
 data:
-  CLOUDINARY_CLOUD_NAME: ZHo2OGF6dnllCg==
-  CLOUDINARY_KEY: NTMzOTg4NDk0Mzg0MzU2Cg==
-  CLOUDINARY_SECRET: THpSTVRXbXVta1ZWT0VraVRhckdMNXdmaVpBCg== 
-  MAPBOX_TOKEN: c2suZXlKMUlqb2laM053ZG5OeUlpd2lZU0k2SW1Oc2RqVnpaVE56TnpBMk4ya3lhbkJvZERoclpXVjFObWtpZlEuVkNVNDNOaDZYcHBPUWd2Qy1ncmU3Zwo= 
-  DB_URL: bW9uZ29kYitzcnY6Ly9nc3B2c3I6eHRpZXJRRFVPTjZJaHVMUEBnc3B2c3IuY2t2anQwYi5tb25nb2RiLm5ldC8/cmV0cnlXcml0ZXM9dHJ1ZSZ3PW1ham9yaXR5JmFwcE5hbWU9Z3NwdnNyCg==
+  CLOUDINARY_CLOUD_NAME: ZGlpMnJvenRw
+  CLOUDINARY_KEY: NzU3NjQzMjU3ODkxMzY0
+  CLOUDINARY_SECRET: SHpBeTdPU3VCZjJhSUFSUm5Fd0tIcEVtc01N
+  MAPBOX_TOKEN: cGsuZXlKMUlqb2lZV1JwYW1GcGMzZGhiQ0lzSW1FaU9pSmpiSFl3TnpKemVHNHhaRzR5TW1wd1ltWm1OSFZ3YlhObUluMC5SVlFZc3UwUnZKZ0NGNTRrMjJkWDBB
+  DB_URL: bW9uZ29kYitzcnY6Ly9qYWlzd2FsYWRpMjQ2OnNjN1ZHU3lkN2RRQ2NMeTFAY2x1c3RlcjAuaXE2bXV0aC5tb25nb2RiLm5ldC8/cmV0cnlXcml0ZXM9dHJ1ZSZ3PW1ham9yaXR5JmFwcE5hbWU9Q2x1c3RlcjA=
+  SECRET: ZGV2b3Bzc2hhY2s=
 
-  SECRET: Z3NwdnNyCg==
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -63,6 +63,16 @@ spec:
                 secretKeyRef:
                   name: yelp-camp-secrets
                   key: SECRET
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 30   # Adjust the initial delay here
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 30   # Adjust the initial delay here
 
 ---
 apiVersion: v1
