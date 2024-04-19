@@ -63,16 +63,6 @@ spec:
                 secretKeyRef:
                   name: yelp-camp-secrets
                   key: SECRET
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 3000
-            initialDelaySeconds: 30   # Adjust the initial delay here
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 3000
-            initialDelaySeconds: 30   # Adjust the initial delay here
 
 ---
 apiVersion: v1

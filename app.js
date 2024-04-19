@@ -146,10 +146,9 @@ app.use('/campgrounds', campgroundRoutes)
 app.use('/campgrounds/:id/reviews', reviewRoutes)
 
 
-app.get('/some-route', (req, res) => {
-    res.render('template', { currentUser: req.user }); // Assuming `req.user` contains user information
+app.get('/', (req, res) => {
+    res.render('home')
 });
-
 
 
 app.all('*', (req, res, next) => {
