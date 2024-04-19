@@ -76,6 +76,7 @@ pipeline {
             steps {
                 script {
                     withKubeCredentials(kubectlCredentials: [[caCertificate: '', clusterName: 'eks-spot-cluster', contextName: '', credentialsId: 'k8-token', namespace: 'webapps', serverUrl: 'https://F75C295016B043FFA79EBCD0A6D9640F.gr7.us-east-1.eks.amazonaws.com']]) {
+                        sh "cd Manifests"
                         sh "kubectl apply -f dss.yml"
                         sleep 60
                     }
